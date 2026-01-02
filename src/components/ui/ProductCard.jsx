@@ -82,7 +82,7 @@ export default function ProductCard({ product }) {
 
         // Animation Sequence
         tl.to(imageRef.current, {
-            y: -50, // Move shoe up slightly
+            y: -115, // Move shoe even higher for large screens too
             scale: 1.05,
             rotate: 0,
             filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.5))"
@@ -256,7 +256,7 @@ export default function ProductCard({ product }) {
                         <button
                             onClick={handleBuyNow}
                             disabled={buying || currentSizes.length === 0}
-                            className="w-full bg-white text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:bg-gray-100 uppercase tracking-wider text-sm transition-transform active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+                            className="w-full bg-white text-black font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-xl shadow-lg hover:bg-gray-100 uppercase tracking-wider text-xs sm:text-sm transition-transform active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
                         >
                             {buying ? 'Processing...' : 'Buy Now'}
                         </button>
