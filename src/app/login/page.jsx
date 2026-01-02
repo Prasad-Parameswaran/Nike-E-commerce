@@ -15,6 +15,7 @@ export default function LoginPage() {
     const [otp, setOtp] = useState(['', '', '', '']);
     const [name, setName] = useState('');
     const [isNewUser, setIsNewUser] = useState(false);
+    const [phoneError, setPhoneError] = useState(''); // State for validation error
 
     const [timer, setTimer] = useState(34);
 
@@ -46,6 +47,14 @@ export default function LoginPage() {
 
     const handlePhoneSubmit = async (e) => {
         e.preventDefault();
+
+        // Validation: 10 digit number
+        const phoneRegex = /^\d{10}$/;
+        if (!phoneRegex.test(phoneNumber)) {
+            setPhoneError('Please enter a valid 10-digit phone number');
+            return;
+        }
+
         setLoading(true);
 
         try {
@@ -182,11 +191,17 @@ export default function LoginPage() {
                                     <input
                                         type="tel"
                                         value={phoneNumber}
-                                        onChange={(e) => setPhoneNumber(e.target.value)}
+                                        onChange={(e) => {
+                                            setPhoneNumber(e.target.value);
+                                            setPhoneError(''); // Clear error on change
+                                        }}
                                         placeholder="Enter Phone"
-                                        className="w-full bg-[#1A1A1A] border border-gray-800 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-white transition-all"
+                                        className={`w-full bg-[#1A1A1A] border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-white transition-all ${phoneError ? 'border-red-500 focus:ring-red-500' : 'border-gray-800'}`}
                                         required
                                     />
+                                    {phoneError && (
+                                        <p className="text-red-500 text-sm mt-2">{phoneError}</p>
+                                    )}
                                 </div>
 
                                 <button
