@@ -33,7 +33,7 @@ export default function Home() {
 
     return (
         <div className="bg-[#121212] min-h-screen text-white">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+            <div className="mx-auto max-w-7xl px-12 sm:px-6 lg:px-8 py-16">
                 <h2 className="text-3xl font-bold tracking-tight text-white mb-10">Men&apos;s Jordan Shoes</h2>
 
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
